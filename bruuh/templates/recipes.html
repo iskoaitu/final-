@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+{% block content %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/сrecept.css') }}">
+
+<div class="content-wrapper">
+    <h2 class="page-title">Recipes</h2>
+    <a href="{{ url_for('recipe.add_recipe') }}" class="add-recipe-button">+ Add New Recipe</a>
+    <ul class="recipe-list">
+        {% for recipe in recipes %}
+            <li class="recipe-item">
+                <a href="{{ url_for('recipe.recipe_detail', recipe_id=recipe.id) }}" class="recipe-link">
+                    {{ recipe.title }}
+                </a>
+            </li>
+        {% endfor %}
+    </ul>
+</div>
+<footer>
+    <p>&copy; 2024 Roblox Restaurant. All rights reserved.</p>
+</footer>
+{% endblock %}
